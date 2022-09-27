@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Form </title>
+</head>
+<body>
+
+    <div class="form">
+        <form method="post" name="formValidasi" onsubmit="return validasi()">
+            <h2>Form Data Karyawan</h2>
+            <div class="item">
+                Nama Lengkap :
+                <input type="text" name="nama" id="nama">
+                <small style="color: red;" id="alertNama"></small>
+            </div>
+
+            <div class="item">
+                No. Karyawan :
+                <input type="text" name="nk" id="nk">
+                <small style="color: red;" id="alertNo"></small>
+            </div>
+
+            <div class="item">
+                Tempat Lahir :
+                <input type="text" name="ttl" id="ttl">
+                <small style="color: red;" id="alertTTL"></small>
+            </div>
+
+            <div class="item">
+                Tanggal Lahir :
+                <input type="date" name="tgl" id="tgl">
+                <small style="color: red;" id="alertTGL"></small>
+            </div>
+
+            <div class="item">
+                Alamat :
+                <textarea name="alamat" id="alamat" style="width: 100%;" ></textarea>
+                <small style="color: red;" id="alertAlamat"></small>
+            </div>
+
+            <div class="item">
+                Jabatan :
+                <input type="text" id="jbtn" name="jbtn">
+                <small style="color: red;" id="alertJabatan"></small>
+            </div>
+
+            <div class="item">
+                Bagian :
+                <select name="bagian" id="bagian" style="width: 100%"></select>
+                <small style="color: red;" id="alertBagian"></small>
+            </div>
+
+            <div>
+                <button type="submit">Simpan</button>
+            </div>
+            
+        </form>
+    </div>
+
+    <script>
+        let dataProdi = ["Gudang", "Penjualan", "Pembelian","Pemasaran", "Kantor"];
+        let bagian = document.getElementById("bagian");
+
+        // bagian option disable
+        var bagianDisabled = document.createElement("option");
+        bagianDisabled.setAttribute("disabled", "disabled");
+        bagianDisabled.setAttribute("selected", "selected");
+        bagianDisabled.setAttribute("value", "pilih");
+        bagianDisabled.innerHTML = '-- Pilih --';
+
+        // set option
+        bagian.appendChild(bagianDisabled);
+        for (let index = 0; index < dataProdi.length; index++){
+            let bagianOption = document.createElement("option");
+            bagianOption.innerText = dataProdi[index]
+            bagian.appendChild(bagianOption);
+        }
+
+
+        function validasi() {
+            // tangkap value input
+            var nama = document.getElementById("nama").value
+            var nk = document.getElementById("nk").value
+            var ttl = document.getElementById("ttl").value
+            var tgl = document.getElementById("tgl").value
+            var alamat = document.getElementById("alamat").value
+            var jbtn = document.getElementById("jbtn").value
+            var bgn = document.getElementById("bagian").value
+
+            console.log(nama);
+            console.log(nk);
+            console.log(ttl);
+            console.log(tgl);
+            console.log(alamat);
+            console.log(jbtn);
+            console.log(bgn);
+
+            // // jika value kosong pesan ditampilkan
+
+            if (nama == "") {
+                document.getElementById("alertNama").innerHTML = "Harus Diisi**";
+                // jika value tidak kosong
+            }else{
+                document.getElementById("alertNama").innerHTML = '';
+            }
+
+            if (nk == "") {
+                document.getElementById("alertNo").innerHTML = "Harus Diisi**";
+                // jika value tidak kosong
+            }else{
+                document.getElementById("alertNo").innerHTML = '';
+            }
+
+            if (ttl == "") {
+                document.getElementById("alertTTL").innerHTML = "Harus Diisi**";
+                // jika value tidak kosong
+            }else{
+                document.getElementById("alertTTL").innerHTML = '';
+            }
+
+            if (tgl == "") {
+                document.getElementById("alertTGL").innerHTML = "Harus Diisi**";
+                // jika value tidak kosong
+            }else{
+                document.getElementById("alertTGL").innerHTML = '';
+            }
+
+            if (alamat == "") {
+                document.getElementById("alertAlamat").innerHTML = "Harus Diisi**";
+                // jika value tidak kosong
+            }else{
+                document.getElementById("alertAlamat").innerHTML = '';
+            }
+
+            if (jbtn == "") {
+                document.getElementById("alertJabatan").innerHTML = "Harus Diisi**";
+                // jika value tidak kosong
+            }else{
+                document.getElementById("alertJabatan").innerHTML = '';
+            }
+
+            if (bgn == "pilih") {
+                document.getElementById("alertBagian").innerHTML = "Harus Diisi**";
+                // jika value tidak kosong
+            }else{
+                document.getElementById("alertBagian").innerHTML = '';
+            }
+
+            // jika ada var yang bervalue kosong maka return false
+            if(nama == "" || nk == "" || ttl == "" || tgl == "" || alamat == "" || jbtn == "" || bgn == "pilih"){
+                return false;
+            }
+
+        }
+    </script>
+    
+</body>
+</html>

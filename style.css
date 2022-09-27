@@ -1,0 +1,31 @@
+form{
+    border: solid 2px #ccc;
+    padding: 20px;
+    width: 500px;
+    border-radius: 20px;
+    background-color: pink;
+}
+
+.item{
+    margin-bottom: 20px;
+}
+
+input{
+    width: 100%;
+    box-sizing: border-box;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+button{
+    width: 100%;
+    background-color: blue;
+    color: white;
+}
+
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
